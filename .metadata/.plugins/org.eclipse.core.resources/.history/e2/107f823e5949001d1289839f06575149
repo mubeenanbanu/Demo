@@ -1,0 +1,41 @@
+package Introduction;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class calendar {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\mubeena\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		String expectedMonth="December";
+		String expectedYear="2022";
+		driver.get("https://www.path2usa.com/travel-companion/");
+		driver.findElement(By.id("form-field-travel_comp_date")).click();
+		String actualDate=driver.findElement(By.className("cur-month")).getText();
+		System.out.println(actualDate);
+		while(!actualDate.contains(expectedMonth))
+		{
+			driver.findElement(By.className("flatpickr-next-month")).click();
+		}
+		List<WebElement> days=driver.findElements(By.className("flatpickr-day"));
+		for(int i=0;i<days.size();i++)
+		{
+			if(days.get(i).getText().contains("26"))
+			{
+				days.get(i).click();
+			}
+		}
+		driver.quit();
+
+	}
+
+}

@@ -1,0 +1,39 @@
+package javaBasics;
+
+public class Loops {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int i=10;
+		while(i>5)
+		{
+			System.out.println(i);
+			i--;
+		}
+		System.out.println("-------");
+		int j=10;
+		do
+		{
+			System.out.println(j);
+			j--;
+		}while(j>5);
+		
+		System.out.println("----------------");
+		
+		for(int i1=1;i1<5;i1++)
+		{
+			System.out.println("outer loop stared");
+			for(int j1=1;j1<5-i1;j1++)
+			{
+				System.out.println("inner loop stared");
+				
+			}
+			System.out.println("outer loop finished");
+		}
+		
+		
+		
+
+	}
+
+}

@@ -1,0 +1,28 @@
+package Introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class calendar {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\mubeena\\Downloads\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		String expectedMonth="December";
+		String expectedYear="2022";
+		driver.get("https://www.path2usa.com/travel-companion/");
+		driver.findElement(By.id("form-field-travel_comp_date")).click();
+		String actualDate=driver.findElement(By.cssSelector("div[class='DayPicker-Caption'] div:nth-child(1)")).getText();
+		String[] a=actualDate.split(" ");
+		while(a[0]!=expectedMonth && a[1]==expectedYear)
+		{
+			
+		}
+		driver.quit();
+
+	}
+
+}
